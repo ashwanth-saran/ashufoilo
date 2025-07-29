@@ -3,557 +3,780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Ashufoilo </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Ashwanth Saran JC | SOC Analyst & Network Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberblue: '#00f7ff',
+                        cyberdark: '#0a0e17',
+                        cyberpurple: '#8a2be2',
+                        cybergray: '#1a202c',
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        exo: ['Exo 2', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Modern Monochrome Theme */
-        :root {
-            --primary: #ffffff;
-            --secondary: #2c3e50;
-            --accent: #3498db;
-            --light-gray: #f1f1f1;
-            --dark-gray: #000000;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-gray);
-            background: var(--primary);
+            font-family: 'Exo 2', sans-serif;
+            background-color: #0a0e17;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background: var(--secondary);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-links a {
-            color: var(--primary);
-            padding: 0 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            animation: fadeIn 1.5s ease;
-        }
-
-        .profile-img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 5px solid var(--accent);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--dark-gray);
-            margin-bottom: 2rem;
-        }
-
-        .social-icons a {
-            color: var(--secondary);
-            margin: 0 1rem;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            transform: scale(1.2);
-        }
-
-        /* Download CV Button */
-        .download-btn {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 2rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            color: var(--secondary);
-            margin-bottom: 2rem;
+        
+        .cyber-border {
             position: relative;
-            padding-bottom: 1rem;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
         }
-
+        
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00cc, #00f7ff, #00ff00, #ff00cc);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            opacity: 0.3;
+            animation: border-glow 8s linear infinite;
+        }
+        
+        @keyframes border-glow {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.7);
+        }
+        
+        .terminal-line::before {
+            content: '> ';
+            color: #00f7ff;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f7ff, transparent);
         }
-
-        /* Projects */
-        .project {
-            background: var(--light-gray);
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 1rem 0;
-            transition: transform 0.3s ease;
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
         }
-
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        
+        .skill-badge {
+            transition: all 0.3s ease;
         }
-
-        .project h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        .project-tools {
-            margin: 1rem 0;
-        }
-
-        .project-tools span {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            margin: 0.3rem;
-            display: inline-block;
-        }
-
-        /* Certificates */
-        .certificates-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .certificate-card {
-            background: var(--light-gray);
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .certificate-card:hover {
+        
+        .skill-badge:hover {
+            background-color: rgba(0, 247, 255, 0.2);
             transform: scale(1.05);
         }
-
-        .certificate-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        
+        .contact-icon {
+            transition: all 0.3s ease;
         }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        
+        .contact-icon:hover {
+            color: #00f7ff;
+            transform: scale(1.2);
         }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 80vh;
+        
+        .terminal-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
         }
-
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
-
-        .skill-card {
-            background: var(--light-gray);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
+        
+        .dark-mode .cyber-border {
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
         }
-
-        .skill-card i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
+        
+        .dark-mode .cyber-border::before {
+            background: linear-gradient(45deg, #8a2be2, #4b0082, #9400d3, #8a2be2);
         }
-
-        /* Education */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
+        
+        .dark-mode .glow-text {
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
         }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 3px;
-            background: var(--accent);
+        
+        .dark-mode .terminal-line::before {
+            color: #8a2be2;
         }
-
-        .timeline-item {
-            padding: 1rem 2rem;
-            position: relative;
-            width: 50%;
+        
+        .dark-mode .section-title::after {
+            background: linear-gradient(90deg, transparent, #8a2be2, transparent);
         }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 1.5rem;
-            left: -50%;
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 3px solid var(--primary);
+        
+        .dark-mode .skill-badge:hover {
+            background-color: rgba(138, 43, 226, 0.2);
         }
-
-        /* Contact */
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .contact-item {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: scale(1.05);
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .timeline::before {
-                left: 40px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 60px;
-            }
-
-            .timeline-item::before {
-                left: 15px;
-            }
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .dark-mode .contact-icon:hover {
+            color: #8a2be2;
         }
     </style>
 </head>
-<body>
+<body class="bg-cyberdark text-gray-200">
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-cybergray text-cyberblue shadow-lg hover:bg-gray-800 transition-all">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <!-- Floating Contact Button -->
+    <button id="contactBtn" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-cyberblue text-cyberdark flex items-center justify-center shadow-xl hover:bg-cyan-300 transition-all">
+        <i class="fas fa-comment-alt text-xl"></i>
+    </button>
+    
     <!-- Navigation -->
-    <nav>
-        <div class="logo"> Ashufoilo </div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#certificates">Certificates</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
+    <nav class="fixed w-full z-40 bg-cyberdark/90 backdrop-blur-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-orbitron glow-text">AS<span class="text-cyberblue">JC</span></a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-cyberblue transition-colors">About</a>
+                <a href="#skills" class="hover:text-cyberblue transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-cyberblue transition-colors">Projects</a>
+                <a href="#education" class="hover:text-cyberblue transition-colors">Education</a>
+                <a href="#contact" class="hover:text-cyberblue transition-colors">Contact</a>
+  <a href="./Ashwanth_Saran_CV.pdf" download
+   class="bg-cyberblue text-cyberdark px-4 py-2 rounded-md font-bold hover:bg-cyan-300 transition-colors">
+   Download Resume
+</a>
+  </nav>
+    
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <img src="profile.jpg" alt="Ashwanth Saran" class="profile-img">
-        <h1>MCA Student | Full-Stack Developer</h1>
-        <p>Passionate about building web solutions and machine learning models</p>
-        <a href="Ashwanth_Saran_CV.pdf" download class="download-btn">Download CV</a>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/ashwanthsaran08/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/ashwanth-saran" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/ash.wxnth/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <section class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 font-orbitron">
+                    <span class="block">Ashwanth Saran</span>
+                    <span class="text-cyberblue">JC</span>
+                </h1>
+                <div class="terminal-line text-2xl mb-6">
+                    <span class="terminal-cursor">MCA Graduate | SOC Analyst | Network Engineer</span>
+                </div>
+                <p class="text-xl mb-8 max-w-lg">
+                    Securing networks and analyzing threats with a passion for cybersecurity and technical innovation.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="bg-cyberblue text-cyberdark px-6 py-3 rounded-md font-bold hover:bg-cyan-300 transition-colors">View Projects</a>
+                    <a href="#contact" class="border border-cyberblue text-cyberblue px-6 py-3 rounded-md font-bold hover:bg-cyberblue/10 transition-colors">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="hexagon bg-cybergray w-64 h-72 md:w-80 md:h-96 mx-auto relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyberblue/20 to-transparent"></div>
+                       <div class="absolute inset-0 flex items-center justify-center">
+  <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+  <img src="profile.jpg" alt="Ashwanth Saran"
+       class="w-full h-full object-cover object-center scale-125">
+</div>
+</div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-cyberblue w-24 h-24 hexagon flex items-center justify-center">
+                        <span class="text-cyberdark font-bold text-xl rotate-12">SOC</span>
+                    </div>
+                    <div class="absolute -top-6 -left-6 bg-cyberpurple w-20 h-20 hexagon flex items-center justify-center">
+                        <span class="text-white font-bold rotate-12">NET</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
+    
     <!-- About Section -->
-    <section id="about" class="container">
-        <h2 class="section-title">About Me</h2>
-        <p>
-            I'm Ashwanth Saran JC, an MCA student and Python enthusiast with skills in HTML, CSS, and SQL. I'm passionate about leveraging technology to create innovative solutions and eager to kickstart my career in IT. As a freelancer, I enjoy taking on diverse projects that challenge me both technically and creatively. Beyond coding, I have a keen interest in photography and editing, which let me blend my artistic vision with my technical expertise. I'm always excited to learn, grow, and explore new opportunities in tech. Thanks for visiting my portfolio
-        </p>
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="mb-6 text-lg">
+                        Ashwanth Saran JC is an MCA graduate with a strong passion for network engineering, cybersecurity, and technical support. He is working towards a successful IT career by leveraging knowledge of networks, protocols, and security frameworks.
+                    </p>
+                    <p class="mb-6 text-lg">
+                        He is interested in roles like SOC Analyst and Network Support Engineer to contribute to monitoring and defending networks against emerging threats.
+                    </p>
+                    <p class="mb-6 text-lg">
+                        As a freelancer, he has worked on challenging tech projects that improved his adaptability and problem-solving skills. He is consistently learning SIEM tools, firewalls, and OSI layers to stay ahead in the cybersecurity landscape.
+                    </p>
+                    <p class="text-lg">
+                        Outside of technology, Ashwanth enjoys exploring photography and video editing, which allows him to express creativity and attention to detail.
+                    </p>
+                </div>
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cybergray p-8 rounded-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-cyberblue font-orbitron">Specializations</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-cyberblue">
+                                    <i class="fas fa-shield-alt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Security Operations</h4>
+                                    <p class="text-sm">Threat monitoring & analysis</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="text-cyberblue">
+                                    <i class="fas fa-network-wired fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Network Engineering</h4>
+                                    <p class="text-sm">Infrastructure design & security</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="text-cyberblue">
+                                    <i class="fas fa-bug fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Malware Analysis</h4>
+                                    <p class="text-sm">Threat investigation</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="text-cyberblue">
+                                    <i class="fas fa-lock fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Security Frameworks</h4>
+                                    <p class="text-sm">MITRE ATT&CK, Zero Trust</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h3 class="text-2xl font-bold mb-6 text-cyberblue font-orbitron">Professional Approach</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="mt-1 text-cyberblue">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <p class="ml-3">Proactive threat detection and prevention strategies</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="mt-1 text-cyberblue">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <p class="ml-3">Continuous learning and skill development</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="mt-1 text-cyberblue">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <p class="ml-3">Collaborative problem-solving approach</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="mt-1 text-cyberblue">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <p class="ml-3">Ethical and responsible security practices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-
+    
     <!-- Skills Section -->
-    <section id="skills" class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-container">
-            <div class="skill-card">
-                <i class="fab fa-python"></i>
-                <h3>Python</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-js"></i>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-html5"></i>
-                <h3>HTML5</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-css3"></i>
-                <h3>CSS3</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-database"></i>
-                <h3>SQL</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-brain"></i>
-                <h3>Machine Learning</h3>
-            </div>
-        </div>
+    <section id="skills" class="py-20 bg-cybergray/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Networking -->
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cyberdark p-6 rounded-lg h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-network-wired text-cyberdark text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-orbitron">Networking</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">OSI & TCP/IP Models</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Subnetting</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VLANs</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">DHCP</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">DNS</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">NAT</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Routing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cybersecurity -->
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cyberdark p-6 rounded-lg h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-shield-alt text-cyberdark text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-orbitron">Cybersecurity</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Firewalls</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">SIEM</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">MITRE ATT&CK</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VPN</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Malware Analysis</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Zero Trust</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Languages -->
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cyberdark p-6 rounded-lg h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-code text-cyberdark text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-orbitron">Languages</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">HTML</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">CSS</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">SQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cyberdark p-6 rounded-lg h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-tools text-cyberdark text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-orbitron">Tools</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Jupyter Notebook</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VS Code</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Microsoft Office</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Canva</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Elevan labs</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Hedra</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Systems -->
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cyberdark p-6 rounded-lg h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-desktop text-cyberdark text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-orbitron">Systems</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Windows OS</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">PC Assembling</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">OS Installation</span>
+                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Disk Management</span>
+                        </div>
+                    </div>
+                </div>
     </section>
-
+    
     <!-- Projects Section -->
-    <section id="projects" class="container">
-        <h2 class="section-title">Projects</h2>
-        
-        <!-- Project 1 -->
-        <div class="project">
-            <h3>Online Turf Booking System</h3>
-            <p>
-                Full-stack web application for sports turf reservations. Features include real-time 
-                availability checks, user authentication, and responsive design.
-            </p>
-            <div class="project-tools">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="project-card cyber-border p-1 rounded-lg transition-all duration-500">
+                    <div class="bg-cybergray rounded-lg h-full overflow-hidden">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold font-orbitron">CRESBOT</h3>
+                                <span class="bg-cyberblue text-cyberdark px-3 py-1 rounded-md text-sm font-bold">AI Chatbot</span>
+                            </div>
+                            <p class="mb-6 text-gray-300">
+                                Real-time chatbot UI for exploring college data like admissions, fees, and placements with interactive interface and animations.
+                            </p>
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-2 text-cyberblue">Technologies Used</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">HTML</span>
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">CSS</span>
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">JavaScript</span>
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">JSON</span>
+                                     <span class="bg-cyberdark px-3 py-1 rounded-md">NLP</span>
+                                </div>
+                            </div>
+                            <div class="h-48 bg-gray-800 rounded-lg mb-6 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-robot text-5xl text-cyberblue mb-4"></i>
+                                    <p>Chatbot Interface Preview</p>
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center text-cyberblue font-bold hover:text-cyan-300">
+                                View Project Details
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card cyber-border p-1 rounded-lg transition-all duration-500">
+                    <div class="bg-cybergray rounded-lg h-full overflow-hidden">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold font-orbitron">Gender & Age Prediction</h3>
+                                <span class="bg-cyberpurple text-white px-3 py-1 rounded-md text-sm font-bold">Machine Learning</span>
+                            </div>
+                            <p class="mb-6 text-gray-300">
+                                Facial image-based prediction system using computer vision and deep learning, applicable in security and personalization scenarios.
+                            </p>
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-2 text-cyberblue">Technologies Used</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">Python</span>
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">OpenCV</span>
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">CNN</span>
+                                    <span class="bg-cyberdark px-3 py-1 rounded-md">Jupyter Notebook</span>
+                                </div>
+                            </div>
+                            <div class="h-48 bg-gray-800 rounded-lg mb-6 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-brain text-5xl text-cyberpurple mb-4"></i>
+                                    <p>Machine Learning Model Visualization</p>
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center text-cyberblue font-bold hover:text-cyan-300">
+                                View Project Details
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="https://ashwanth-saran.github.io/Online-Turf-portfolio/" class="btn" target="_blank">View Code</a>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project">
-            <h3>Gender & Age Prediction</h3>
-            <p>
-                Machine learning model using CNN for facial analysis. Built with Python in Jupyter 
-                Notebook, using OpenCV for face detection and preprocessing.
-            </p>
-            <div class="project-tools">
-                <span>Python</span>
-                <span>TensorFlow</span>
-                <span>OpenCV</span>
-            </div>
-            <a href="https://ashwanth-saran.github.io/gender-age-prediction-portfolio/" class="btn" target="_blank">View Code</a>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project">
-            <h3>CRESBOT: AI Chatbot</h3>
-            <p>
-                AI-powered chatbot built using Hugging Face AI for real-time interactions. 
-                Features JSON-based FAQ system and cross-device compatibility.
-            </p>
-            <div class="project-tools">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Hugging Face</span>
-            </div>
-            <a href="https://ashwanth-saran.github.io/cresbot-portfolio/" class="btn" target="_blank">View Code</a>
         </div>
     </section>
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="container">
-        <h2 class="section-title">Certifications</h2>
-        <div class="certificates-container">
-            <div class="certificate-card" onclick="openLightbox('cert1.jpg')">
-                <img src="cert1.jpg" alt="Certificate 1">
-            </div>
-            <div class="certificate-card" onclick="openLightbox('cert2.jpg')">
-                <img src="cert2.jpg" alt="Certificate 2">
-            </div>
-           
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <img src="" alt="Certificate" id="lightbox-img">
-    </div>
-
+    
     <!-- Education Section -->
-    <section id="education" class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>B.S. Abdur Rahman Crescent Institute</h3>
-                <p>Master of Computer Applications (MCA) | CGPA: 6.5/10</p>
-                <small>2023 - Present</small>
-            </div>
-            <div class="timeline-item">
-                <h3>Vels Institute of Science</h3>
-                <p>Bachelor of Computer Applications (BCA) | CGPA: 7.1/10</p>
-                <small>2020 - 2023</small>
-            </div>
-            <div class="timeline-item">
-                <h3>PMS Matriculation School</h3>
-                <p>12th Grade | Percentage: 50%</p>
-                <small>2018 - 2019</small>
-            </div>
-            <div class="timeline-item">
-                <h3>Kendriya Vidyalaya DGQA</h3>
-                <p>10th Grade | CGPA: 6.6/10</p>
-                <small>2015 - 2016</small>
+    <section id="education" class="py-20 bg-cybergray/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">Education</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Education 1 -->
+                <div class="cyber-border p-1 rounded-lg mb-10">
+                    <div class="bg-cyberdark p-6 rounded-lg">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Master of Computer Applications (MCA)</h3>
+                                <p class="text-cyberblue font-bold">B.S. Abdur Rahman Crescent University, Chennai</p>
+                            </div>
+                            <span class="mt-4 md:mt-0 bg-cyberblue text-cyberdark px-3 py-1 rounded-md font-bold">2023–2025</span>
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex items-center">
+                                <span class="font-bold mr-4">CGPA:</span>
+                                <span class="bg-cybergray px-4 py-2 rounded-md">6.9/10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education 2 -->
+                <div class="cyber-border p-1 rounded-lg">
+                    <div class="bg-cyberdark p-6 rounded-lg">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Bachelor of Computer Applications (BCA)</h3>
+                                <p class="text-cyberblue font-bold">Vels Institute of Science, Technology & Advanced Studies , Chennai</p>
+                            </div>
+                            <span class="mt-4 md:mt-0 bg-cyberblue text-cyberdark px-3 py-1 rounded-md font-bold">2020–2023</span>
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex items-center">
+                                <span class="font-bold mr-4">CGPA:</span>
+                                <span class="bg-cybergray px-4 py-2 rounded-md">7.1/10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
-    <section id="contact" class="container">
-        <h2 class="section-title">Contact </h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <p>ashwanthsaranjc@gmail.com</p>
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">Get In Touch</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <div class="cyber-border p-1 rounded-lg">
+                        <div class="bg-cybergray p-8 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-6 font-orbitron">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="contact-icon text-cyberblue text-xl mt-1 mr-4">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Email</h4>
+                                        <a href="mailto:ashwanthsaranjc@gmail.com" class="hover:text-cyberblue transition-colors">ashwanthsaranjc@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="contact-icon text-cyberblue text-xl mt-1 mr-4">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Phone</h4>
+                                        <a href="tel:+918667020032" class="hover:text-cyberblue transition-colors">+91 8667020032</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="contact-icon text-cyberblue text-xl mt-1 mr-4">
+                                        <i class="fab fa-linkedin"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">LinkedIn</h4>
+                                        <a href="https://linkedin.com/in/ashwanthsaran08" target="_blank" class="hover:text-cyberblue transition-colors">linkedin.com/in/ashwanthsaran08</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="contact-icon text-cyberblue text-xl mt-1 mr-4">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">GitHub</h4>
+                                        <a href="https://github.com/ashwanth-saran" target="_blank" class="hover:text-cyberblue transition-colors">github.com/ashwanth-saran</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-12">
+                                <h3 class="text-2xl font-bold mb-6 font-orbitron">Availability</h3>
+                                <p class="mb-4">
+                                    I'm currently seeking entry-level positions in SOC Analyst roles and Network Engineering. Feel free to reach out for opportunities or collaborations.
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                    <span>Available for full-time positions and freelance projects</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="cyber-border p-1 rounded-lg">
+                        <div class="bg-cybergray p-8 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-6 font-orbitron">Send a Message</h3>
+                            <form action="https://formsubmit.co/ashwanthsaranjc@gmail.com" method="POST" class="space-y-6">
+    <!-- Optional settings -->
+    <input type="hidden" name="_subject" value="New message from your portfolio!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html">
+
+    <div>
+        <label class="block mb-2 font-medium">Full Name</label>
+        <input type="text" name="name" required class="w-full bg-cyberdark border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:border-cyberblue">
+    </div>
+    <div>
+        <label class="block mb-2 font-medium">Email Address</label>
+        <input type="email" name="email" required class="w-full bg-cyberdark border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:border-cyberblue">
+    </div>
+    <div>
+        <label class="block mb-2 font-medium">Subject</label>
+        <input type="text" name="subject" class="w-full bg-cyberdark border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:border-cyberblue">
+    </div>
+    <div>
+        <label class="block mb-2 font-medium">Message</label>
+        <textarea name="message" rows="5" required class="w-full bg-cyberdark border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:border-cyberblue"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-cyberblue text-cyberdark py-3 rounded-md font-bold hover:bg-cyan-300 transition-colors">
+        Send Message
+    </button>
+</form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <h3>Phone</h3>
-                <p>+91 86670 20032</p>
-            </div>
-           
         </div>
     </section>
-
+    
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Ashwanth Saran JC | All Rights Reserved</p>
+    <footer class="py-10 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold font-orbitron">Ashwanth Saran JC</h3>
+                    <p class="mt-2 text-gray-400">SOC Analyst & Network Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/ashwanthsaran08/" class="contact-icon text-xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/ashwanth-saran" class="contact-icon text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ash.wxnth/" class="contact-icon text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-10 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 Ashwanth Saran JC. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
-
+    
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="relative w-full max-w-md mx-4">
+            <div class="cyber-border p-1 rounded-lg">
+                <div class="bg-cyberdark rounded-lg p-6">
+                    <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <h3 class="text-2xl font-bold mb-6 font-orbitron">Quick Contact</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="3" class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-cyberblue text-cyberdark py-2 rounded-md font-bold hover:bg-cyan-300 transition-colors">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        // Smooth scrolling
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Contact Modal
+        const contactBtn = document.getElementById('contactBtn');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        contactBtn.addEventListener('click', () => {
+            contactModal.classList.remove('hidden');
+        });
+        
+        closeModal.addEventListener('click', () => {
+            contactModal.classList.add('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-
-        // Lightbox functionality
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = imageSrc;
-            lightbox.style.display = 'flex';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
+        
+        // Project card animations on scroll
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        projectCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
