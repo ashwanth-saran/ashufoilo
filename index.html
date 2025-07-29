@@ -630,7 +630,7 @@
     <!-- Optional settings -->
     <input type="hidden" name="_subject" value="New message from your portfolio!">
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html">
+    <input type="hidden" name="_next" value="https://ashwanth-saran.github.io/ashufoilo/thank-you.html">
 
     <div>
         <label class="block mb-2 font-medium">Full Name</label>
@@ -696,20 +696,30 @@
                         <i class="fas fa-times"></i>
                     </button>
                     <h3 class="text-2xl font-bold mb-6 font-orbitron">Quick Contact</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <input type="text" placeholder="Your Name" class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue">
-                        </div>
-                        <div>
-                            <input type="email" placeholder="Your Email" class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue">
-                        </div>
-                        <div>
-                            <textarea placeholder="Your Message" rows="3" class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-cyberblue text-cyberdark py-2 rounded-md font-bold hover:bg-cyan-300 transition-colors">
-                            Send
-                        </button>
-                    </form>
+                    <form action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST" class="space-y-4">
+    <!-- Redirect to thank-you.html after submit -->
+    <input type="hidden" name="_next" value="https://ashwanth-saran.github.io/ashufoilo//thank-you.html">
+    <!-- Disable CAPTCHA if you want -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <div>
+        <input type="text" name="name" placeholder="Your Name"
+               class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue" required>
+    </div>
+    <div>
+        <input type="email" name="email" placeholder="Your Email"
+               class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue" required>
+    </div>
+    <div>
+        <textarea name="message" placeholder="Your Message" rows="3"
+                  class="w-full bg-cybergray border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-cyberblue" required></textarea>
+    </div>
+    <button type="submit"
+            class="w-full bg-cyberblue text-cyberdark py-2 rounded-md font-bold hover:bg-cyan-300 transition-colors">
+        Send
+    </button>
+</form>
+
                 </div>
             </div>
         </div>
