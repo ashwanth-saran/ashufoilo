@@ -34,6 +34,118 @@
                 }
             }
         }
+// Add hover effect to interactive elements
+const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-badge');
+hoverElements.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('cursor-hover');
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('cursor-hover');
+  });
+});
+// Terminal typing effect
+const terminalText = document.getElementById('terminalText');
+const texts = [
+  "MCA Graduate | SOC Analyst | Network Engineer",
+  "Cybersecurity Specialist | Threat Analyst",
+  "Network Security Engineer | SIEM Specialist"
+];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+  const currentText = texts[textIndex];
+  
+  if (isDeleting) {
+    terminalText.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    terminalText.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
+  }
+  
+  if (!isDeleting && charIndex === currentText.length) {
+    setTimeout(() => isDeleting = true, 2000);
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    textIndex = (textIndex + 1) % texts.length;
+  }
+  
+  setTimeout(type, isDeleting ? 50 : 100);
+}
+
+type();
+// Matrix effect
+const matrix = document.getElementById('matrixEffect');
+const chars = "01";
+const fontSize = 14;
+let columns = Math.floor(window.innerWidth / fontSize);
+
+function createMatrix() {
+  matrix.innerHTML = '';
+  
+  for (let i = 0; i < columns; i++) {
+    const column = document.createElement('div');
+    column.className = 'absolute top-0';
+    column.style.left = `${i * fontSize}px`;
+    column.style.width = `${fontSize}px`;
+    matrix.appendChild(column);
+    
+    startColumn(column);
+  }
+}
+
+function startColumn(column) {
+  let charsCount = Math.floor(Math.random() * 20) + 10;
+  
+  for (let i = 0; i < charsCount; i++) {
+    setTimeout(() => {
+      const char = document.createElement('span');
+      char.textContent = chars[Math.floor(Math.random() * chars.length)];
+      char.className = 'text-cyberblue opacity-70';
+      char.style.fontSize = `${fontSize}px`;
+      char.style.position = 'absolute';
+      char.style.top = `${i * fontSize}px`;
+      column.appendChild(char);
+      
+      setTimeout(() => {
+        if (column.firstChild) column.removeChild(column.firstChild);
+      }, 2000);
+    }, i * 100);
+  }
+  
+  setTimeout(() => startColumn(column), charsCount * 100 + 3000);
+}
+
+createMatrix();
+window.addEventListener('resize', () => {
+  columns = Math.floor(window.innerWidth / fontSize);
+  createMatrix();
+});
+// Mobile Menu Toggle
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('show');
+    
+    // Change icon based on menu state
+    if (mobileMenu.classList.contains('show')) {
+        mobileMenuButton.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+    } else {
+        mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+    }
+});
+
+// Close menu when clicking links
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+        mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+    });
+});
     </script>
     <style>
         body {
@@ -165,6 +277,78 @@
         .dark-mode .contact-icon:hover {
             color: #8a2be2;
         }
+/* Add to your existing CSS */
+.project-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 25px 40px rgba(0, 247, 255, 0.3);
+}
+/* Add to your hexagon style */
+.hexagon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 40%, 
+    rgba(0, 247, 255, 0.1) 50%, 
+    transparent 60%
+  );
+  animation: hologram 3s infinite linear;
+}
+
+@keyframes hologram {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+/* Add to project card */
+.project-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 25px 40px rgba(0, 247, 255, 0.3);
+}
+/* Add to hero hexagon */
+.hexagon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 40%, 
+    rgba(0, 247, 255, 0.1) 50%, 
+    transparent 60%
+  );
+  animation: hologram 3s infinite linear;
+}
+
+@keyframes hologram {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+/* Mobile Menu Animation */
+#mobileMenu {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+#mobileMenu.show {
+    transform: translateY(0);
+}
     </style>
 </head>
 <body class="bg-cyberdark text-gray-200">
@@ -177,8 +361,39 @@
     <button id="contactBtn" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-cyberblue text-cyberdark flex items-center justify-center shadow-xl hover:bg-cyan-300 transition-all">
         <i class="fas fa-comment-alt text-xl"></i>
     </button>
+ <nav class="fixed w-full z-40 bg-cyberdark/90 backdrop-blur-sm py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold font-orbitron glow-text">AS<span class="text-cyberblue">JC</span></a>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuButton" class="md:hidden text-cyberblue z-50">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="#about" class="hover:text-cyberblue transition-colors">About</a>
+            <a href="#skills" class="hover:text-cyberblue transition-colors">Skills</a>
+            <a href="#projects" class="hover:text-cyberblue transition-colors">Projects</a>
+            <a href="#education" class="hover:text-cyberblue transition-colors">Education</a>
+            <a href="#contact" class="hover:text-cyberblue transition-colors">Contact</a>
+            <a href="./Ashwanth_Saran_CV.pdf" download class="bg-cyberblue text-cyberdark px-4 py-2 rounded-md font-bold hover:bg-cyan-300 transition-colors">Download Resume</a>
+        </div>
+    </div>
     
-    <!-- Navigation -->
+    <!-- Mobile Navigation Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-cyberdark z-40 transform -translate-y-full transition-transform duration-300 md:hidden">
+        <div class="container mx-auto px-4 py-24 flex flex-col space-y-8">
+            <a href="#about" class="text-2xl hover:text-cyberblue transition-colors py-3 border-b border-gray-800">About</a>
+            <a href="#skills" class="text-2xl hover:text-cyberblue transition-colors py-3 border-b border-gray-800">Skills</a>
+            <a href="#projects" class="text-2xl hover:text-cyberblue transition-colors py-3 border-b border-gray-800">Projects</a>
+            <a href="#education" class="text-2xl hover:text-cyberblue transition-colors py-3 border-b border-gray-800">Education</a>
+            <a href="#contact" class="text-2xl hover:text-cyberblue transition-colors py-3 border-b border-gray-800">Contact</a>
+            <a href="./Ashwanth_Saran_CV.pdf" download class="bg-cyberblue text-cyberdark px-6 py-3 rounded-md font-bold text-center mt-8 hover:bg-cyan-300 transition-colors">Download Resume</a>
+        </div>
+    </div>
+</nav>   
+ 
     <nav class="fixed w-full z-40 bg-cyberdark/90 backdrop-blur-sm py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold font-orbitron glow-text">AS<span class="text-cyberblue">JC</span></a>
@@ -233,6 +448,10 @@
                 </div>
             </div>
         </div>
+        <!-- Add inside hero section container -->
+<div class="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+  <div id="matrixEffect" class="h-full w-full"></div>
+</div>
     </section>
     
     <!-- About Section -->
@@ -331,108 +550,234 @@
         </div>
     </section>
     
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-cybergray/50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">Technical Skills</h2>
+ <!-- Enhanced Skills Section -->
+<section id="skills" class="py-20 bg-cybergray/50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center section-title font-orbitron">Technical Skills</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Networking -->
+            <div class="cyber-border p-1 rounded-lg">
+                <div class="bg-cyberdark p-6 rounded-lg h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-network-wired text-cyberdark text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold font-orbitron">Networking</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">OSI & TCP/IP Models</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Subnetting</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VLANs</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">DHCP</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">DNS</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">NAT</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Routing</span>
+                    </div>
+                    
+                    <!-- Network Visualization -->
+                    <div class="mt-6 pt-4 border-t border-cyberblue/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-cyberblue">Network Security</span>
+                            <span class="text-xs text-green-500 flex items-center">
+                                <i class="fas fa-shield-alt mr-1"></i> Active
+                            </span>
+                        </div>
+                        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyberblue rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Networking -->
-                <div class="cyber-border p-1 rounded-lg">
-                    <div class="bg-cyberdark p-6 rounded-lg h-full">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-network-wired text-cyberdark text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-orbitron">Networking</h3>
+            <!-- Cybersecurity -->
+            <div class="cyber-border p-1 rounded-lg">
+                <div class="bg-cyberdark p-6 rounded-lg h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-cyberdark text-xl"></i>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">OSI & TCP/IP Models</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Subnetting</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VLANs</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">DHCP</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">DNS</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">NAT</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Routing</span>
+                        <h3 class="text-2xl font-bold font-orbitron">Cybersecurity</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Firewalls</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">SIEM</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">MITRE ATT&CK</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VPN</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Malware Analysis</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Zero Trust</span>
+                    </div>
+                    
+                    <!-- Threat Detection Visualization -->
+                    <div class="mt-6 pt-4 border-t border-cyberblue/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-cyberblue">Threat Detection</span>
+                            <span class="text-xs text-green-500 flex items-center">
+                                <i class="fas fa-bolt mr-1"></i> Enhanced
+                            </span>
+                        </div>
+                        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyberpurple rounded-full" style="width: 90%"></div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Cybersecurity -->
-                <div class="cyber-border p-1 rounded-lg">
-                    <div class="bg-cyberdark p-6 rounded-lg h-full">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-shield-alt text-cyberdark text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-orbitron">Cybersecurity</h3>
+            </div>
+            
+            <!-- Languages -->
+            <div class="cyber-border p-1 rounded-lg">
+                <div class="bg-cyberdark p-6 rounded-lg h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-code text-cyberdark text-xl"></i>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Firewalls</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">SIEM</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">MITRE ATT&CK</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VPN</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Malware Analysis</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Zero Trust</span>
+                        <h3 class="text-2xl font-bold font-orbitron">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">HTML</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">CSS</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">SQL</span>
+                    </div>
+                    
+                    <!-- Coding Efficiency Visualization -->
+                    <div class="mt-6 pt-4 border-t border-cyberblue/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-cyberblue">Coding Efficiency</span>
+                            <span class="text-xs text-green-500 flex items-center">
+                                <i class="fas fa-tachometer-alt mr-1"></i> Optimized
+                            </span>
+                        </div>
+                        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyberblue rounded-full" style="width: 78%"></div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Languages -->
-                <div class="cyber-border p-1 rounded-lg">
-                    <div class="bg-cyberdark p-6 rounded-lg h-full">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-code text-cyberdark text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-orbitron">Languages</h3>
+            </div>
+            
+            <!-- Tools -->
+            <div class="cyber-border p-1 rounded-lg">
+                <div class="bg-cyberdark p-6 rounded-lg h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-tools text-cyberdark text-xl"></i>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">HTML</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">CSS</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">SQL</span>
+                        <h3 class="text-2xl font-bold font-orbitron">Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Jupyter Notebook</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VS Code</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Microsoft Office</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Canva</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Eleven labs</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Hedra</span>
+                    </div>
+                    
+                    <!-- Tool Proficiency Visualization -->
+                    <div class="mt-6 pt-4 border-t border-cyberblue/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-cyberblue">Tool Proficiency</span>
+                            <span class="text-xs text-green-500 flex items-center">
+                                <i class="fas fa-cogs mr-1"></i> Advanced
+                            </span>
+                        </div>
+                        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyberpurple rounded-full" style="width: 88%"></div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Tools -->
-                <div class="cyber-border p-1 rounded-lg">
-                    <div class="bg-cyberdark p-6 rounded-lg h-full">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-tools text-cyberdark text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-orbitron">Tools</h3>
+            </div>
+            
+            <!-- Systems -->
+            <div class="cyber-border p-1 rounded-lg">
+                <div class="bg-cyberdark p-6 rounded-lg h-full">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-desktop text-cyberdark text-xl"></i>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Jupyter Notebook</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">VS Code</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Microsoft Office</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Canva</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Elevan labs</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Hedra</span>
+                        <h3 class="text-2xl font-bold font-orbitron">Systems</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Windows OS</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">PC Assembling</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">OS Installation</span>
+                        <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Disk Management</span>
+                    </div>
+                    
+                    <!-- System Management Visualization -->
+                    <div class="mt-6 pt-4 border-t border-cyberblue/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-cyberblue">System Management</span>
+                            <span class="text-xs text-green-500 flex items-center">
+                                <i class="fas fa-server mr-1"></i> Expert
+                            </span>
+                        </div>
+                        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyberblue rounded-full" style="width: 92%"></div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Systems -->
-                <div class="cyber-border p-1 rounded-lg">
-                    <div class="bg-cyberdark p-6 rounded-lg h-full">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-cyberblue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-desktop text-cyberdark text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-orbitron">Systems</h3>
+            </div>
+            
+            <!-- Skills Visualization Banner -->
+            <div class="cyber-border p-1 rounded-lg col-span-full">
+                <div class="bg-cyberdark p-6 rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-cyberblue mb-2" id="skillCounter">0</div>
+                            <div class="text-sm">Technical Skills</div>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Windows OS</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">PC Assembling</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">OS Installation</span>
-                            <span class="skill-badge bg-cybergray px-4 py-2 rounded-md">Disk Management</span>
+                        
+                        <div class="flex justify-center">
+                            <div class="relative w-32 h-32">
+                                <div class="absolute inset-0 rounded-full border-4 border-cyberblue border-opacity-30"></div>
+                                <div class="absolute inset-0 rounded-full border-4 border-cyberblue border-t-transparent animate-spin" style="animation-duration: 3s;"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fas fa-brain text-3xl text-cyberblue"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-cyberpurple mb-2" id="toolCounter">0</div>
+                            <div class="text-sm">Tools Mastered</div>
                         </div>
                     </div>
                 </div>
-    </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Animated counters for skills and tools
+    function animateCounter(elementId, finalValue, duration = 2000) {
+        const element = document.getElementById(elementId);
+        const increment = finalValue / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= finalValue) {
+                clearInterval(timer);
+                element.textContent = finalValue;
+            } else {
+                element.textContent = Math.floor(current);
+            }
+        }, 16);
+    }
+    
+    // Initialize counters when section comes into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter('skillCounter', 24);
+                animateCounter('toolCounter', 12);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    observer.observe(document.getElementById('skills'));
+</script>
     
     <!-- Projects Section -->
     <section id="projects" class="py-20">
@@ -467,7 +812,7 @@
                                     <p>Chatbot Interface Preview</p>
                                 </div>
                             </div>
-                            <a href="https://ashwanth-saran.github.io/cresbot-portfolio/" class="inline-flex items-center text-cyberblue font-bold hover:text-cyan-300">
+                            <a href="" class="inline-flex items-center text-cyberblue font-bold hover:text-cyan-300">
                                 View Project Details
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </a>
