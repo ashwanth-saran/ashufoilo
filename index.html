@@ -1011,7 +1011,7 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+     <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="#" class="logo">AS<span>JC</span></a>
@@ -1025,12 +1025,12 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- In your navigation section -->
-<a href="https://raw.githubusercontent.com/ashwanth-saran/ashufoilo/main/resume.pdf" 
-   download="Ashwanth_Resume.pdf" 
-   class="btn btn-primary">
-   Download Resume
-</a>
+                    <!-- Modified Download Resume button -->
+                    <li>
+                        <a class="btn btn-primary download-resume-btn">
+                            Download Resume
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -1490,7 +1490,7 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+  // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navMenu = document.querySelector('nav ul');
         
@@ -1501,6 +1501,9 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                // Skip for download button
+                if(this.classList.contains('download-resume-btn')) return;
+                
                 e.preventDefault();
                 
                 const target = document.querySelector(this.getAttribute('href'));
@@ -1516,52 +1519,52 @@
             });
         });
         
- // Counter animation function
-function animateCounter(element, finalValue, duration = 2000) {
-    let startValue = 0;
-    const increment = finalValue / (duration / 16);
-    let current = startValue;
+        // Counter animation function
+        function animateCounter(element, finalValue, duration = 2000) {
+            let startValue = 0;
+            const increment = finalValue / (duration / 16);
+            let current = startValue;
 
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= finalValue) {
-            clearInterval(timer);
-            element.textContent = finalValue;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= finalValue) {
+                    clearInterval(timer);
+                    element.textContent = finalValue;
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Element references
+        const skillsSection = document.getElementById('skills');
+        const skillCounter = document.getElementById('skillCounter');
+        const toolCounter = document.getElementById('toolCounter');
+
+        let hasAnimated = false; // prevents double execution
+
+        // Intersection Observer setup
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounter(skillCounter, 24); // Change to your actual value
+                    animateCounter(toolCounter, 12);  // Change to your actual value
+                    hasAnimated = true;
+                    observer.disconnect(); // Stop observing after first trigger
+                }
+            });
+        }, {
+            threshold: 0.3 // Lowered for mobile (triggers even with less visibility)
+        });
+
+        // Start observing the section
+        if (skillsSection) {
+            observer.observe(skillsSection);
         } else {
-            element.textContent = Math.floor(current);
+            // Fallback: If section isn't found or already visible (e.g. mobile on load)
+            animateCounter(skillCounter, 24);
+            animateCounter(toolCounter, 12);
         }
-    }, 16);
-}
-
-// Element references
-const skillsSection = document.getElementById('skills');
-const skillCounter = document.getElementById('skillCounter');
-const toolCounter = document.getElementById('toolCounter');
-
-let hasAnimated = false; // prevents double execution
-
-// Intersection Observer setup
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-            animateCounter(skillCounter, 24); // Change to your actual value
-            animateCounter(toolCounter, 12);  // Change to your actual value
-            hasAnimated = true;
-            observer.disconnect(); // Stop observing after first trigger
-        }
-    });
-}, {
-    threshold: 0.3 // Lowered for mobile (triggers even with less visibility)
-});
-
-// Start observing the section
-if (skillsSection) {
-    observer.observe(skillsSection);
-} else {
-    // Fallback: If section isn't found or already visible (e.g. mobile on load)
-    animateCounter(skillCounter, 24);
-    animateCounter(toolCounter, 12);
-}
         
         // Scroll animations for project and education cards
         const projectCards = document.querySelectorAll('.project-card');
@@ -1578,8 +1581,25 @@ if (skillsSection) {
         projectCards.forEach(card => cardObserver.observe(card));
         eduCards.forEach(card => cardObserver.observe(card));
         
+        // Fixed Resume Download Functionality
+        document.querySelector('.download-resume-btn').addEventListener('click', function() {
+            // Create an invisible link to trigger the download
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'https://github.com/ashwanth-saran/ashufoilo/raw/main/resume.pdf';
+            downloadLink.download = 'Ashwanth_Saran_Resume.pdf';
+            downloadLink.style.display = 'none';
+            
+            // Add to the document
+            document.body.appendChild(downloadLink);
+            
+            // Trigger the download
+            downloadLink.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(downloadLink);
+            }, 100);
+        });
     </script>
 </body>
 </html>
-
-
