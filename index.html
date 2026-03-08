@@ -380,93 +380,6 @@
             margin-top: 3px;
         }
         
-        /* Day in the Life Section */
-        .day-in-life {
-            background: rgba(26, 32, 44, 0.5);
-        }
-        .timeline-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--cyberblue), var(--cyberpurple));
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 10px;
-        }
-        .timeline-item {
-            position: relative;
-            width: 100%;
-            margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .timeline-content {
-            position: relative;
-            background: var(--cyberdark);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 0 15px rgba(0, 247, 255, 0.1);
-            border: 1px solid rgba(0, 247, 255, 0.2);
-        }
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: calc(50% + 30px);
-        }
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: calc(50% + 30px);
-        }
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background: var(--cyberblue);
-            border: 4px solid var(--cyberdark);
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .timeline-item:nth-child(odd)::after {
-            right: calc(50% - 12.5px);
-            top: 20px;
-        }
-        .timeline-item:nth-child(even)::after {
-            left: calc(50% - 12.5px);
-            top: 20px;
-        }
-        .timeline-time {
-            display: inline-block;
-            background: rgba(0, 247, 255, 0.1);
-            color: var(--cyberblue);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .timeline-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-        .timeline-desc {
-            color: #cbd5e0;
-        }
-        .timeline-icon {
-            font-size: 2.5rem;
-            color: var(--cyberblue);
-            margin-bottom: 15px;
-        }
-        
         /* Skills Section */
         .skills {
             background: rgba(26, 32, 44, 0.5);
@@ -678,10 +591,10 @@
             color: #00d9e0;
         }
         .cert-logo {
-    width: 40px;
-    height: auto;
-    filter: brightness(0) invert(1); /* optional for dark mode */
-}
+            width: 40px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
         /* Education Section */
         .education {
             background: rgba(26, 32, 44, 0.5);
@@ -1186,18 +1099,6 @@
             .experience-timeline::before {
                 left: 20px;
             }
-            .timeline-item::after {
-                left: 20px !important;
-                right: auto !important;
-            }
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                margin-left: 60px !important;
-                margin-right: 0 !important;
-            }
-            .timeline-container::before {
-                left: 20px;
-            }
         }
         @media (max-width: 768px) {
             .mobile-menu-btn {
@@ -1234,17 +1135,30 @@
             .certs-grid {
                 grid-template-columns: 1fr;
             }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
         @media (max-width: 480px) {
             h1 {
                 font-size: 2.2rem;
             }
+            .subtitle {
+                font-size: 1.2rem;
+            }
             .btn {
                 padding: 10px 20px;
+                font-size: 0.9rem;
             }
             .hero-btns {
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
             }
             .specializations {
                 grid-template-columns: 1fr;
@@ -1252,23 +1166,43 @@
             .section-title {
                 font-size: 1.8rem;
             }
-            .experience-timeline::before,
-            .timeline-container::before {
+            .experience-timeline::before {
                 left: 15px;
             }
-            .exp-item::after,
-            .timeline-item::after {
+            .exp-item::after {
                 left: 15px !important;
             }
             .exp-item:nth-child(odd) .exp-content,
-            .exp-item:nth-child(even) .exp-content,
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
+            .exp-item:nth-child(even) .exp-content {
                 margin-left: 50px !important;
             }
             .qr-code {
                 width: 120px;
                 height: 120px;
+            }
+            .project-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            .project-title {
+                font-size: 1.2rem;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .counter-value {
+                font-size: 2.5rem;
+            }
+            .counter-circle {
+                width: 120px;
+                height: 120px;
+            }
+            .circle-icon {
+                font-size: 2rem;
+            }
+            .contact-grid {
+                gap: 20px;
             }
         }
     </style>
@@ -1307,9 +1241,9 @@
             <div class="hero-text">
                 <h1>Ashwanth Saran <span>JC</span></h1>
                 <div class="subtitle">
-                    SOC Analyst | Network Defender | Cybersecurity Enthusiast<span class="terminal-cursor"></span>
+                    SOC Analyst at Amvion Labs | Network Defender | Cybersecurity Enthusiast<span class="terminal-cursor"></span>
                 </div>
-                <p>Securing digital environments and analyzing cyber threats with a passion for network defense, incident response, and continuous innovation in cybersecurity.</p>
+                <p>Securing digital environments and analyzing cyber threats with a passion for SIEM monitoring, incident response, and continuous innovation in cybersecurity.</p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
@@ -1336,9 +1270,9 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Ashwanth Saran JC is an MCA graduate driven by a strong passion for cybersecurity. Currently pursuing a career as a SOC Analyst, he focuses on network monitoring, threat analysis, and incident response to enhance organizational security.</p>
-                    <p>He has practical experience working with SIEM tools like Wazuh, firewalls such as Palo Alto, and endpoint protection platforms like SentinelOne, which have strengthened his ability to detect and respond to security incidents effectively.</p>
-                    <p>Ashwanth is passionate about learning network protocols, intrusion detection systems, and security frameworks, and aims to continuously advance his skills in SOC operations and network defense. He is interested in roles like SOC Analyst and Network Support Engineer to contribute to proactive cybersecurity strategies.</p>
+                    <p>Ashwanth Saran JC is an MCA graduate and currently working as a SOC Analyst at Amvion Labs, where he focuses on real-time security monitoring, threat analysis, and incident response. He specializes in SIEM analysis using Wazuh and FortiSIEM, analyzing logs, system logs, EDR logs, and firewall logs to detect and correlate security incidents.</p>
+                    <p>He has practical hands-on experience working with SIEM tools like Wazuh and FortiSIEM, firewalls such as Palo Alto and Sophos, and endpoint protection platforms like SentinelOne, which have strengthened his ability to detect and respond to security incidents effectively.</p>
+                    <p>Ashwanth is passionate about learning network protocols, intrusion detection systems, and security frameworks, and aims to continuously advance his skills in SOC operations and network defense. He is interested in roles like SOC Analyst, Threat Intelligence Analyst, and Network Security Engineer to contribute to proactive cybersecurity strategies.</p>
                     <p>Outside the tech domain, Ashwanth enjoys photography and video editing, where his creativity and attention to detail mirror his approach to solving complex technical challenges.</p>
                 </div>
                 <div class="about-box">
@@ -1445,14 +1379,16 @@
                         <h3 class="skill-title">Cybersecurity</h3>
                     </div>
                     <div class="skill-badges">
-                        <span class="skill-badge">Firewalls (Palo Alto)</span>
-                        <span class="skill-badge">SIEM Tools (Wazuh)</span>
+                        <span class="skill-badge">Firewalls (Palo Alto, Sophos)</span>
+                        <span class="skill-badge">SIEM Tools (Wazuh, FortiSIEM)</span>
                         <span class="skill-badge">EDR Solutions (SentinelOne)</span>
                         <span class="skill-badge">MITRE ATT&CK Framework</span>
                         <span class="skill-badge">VPN Configuration</span>
                         <span class="skill-badge">Malware & Threat Analysis</span>
                         <span class="skill-badge">Zero Trust Security</span>
                         <span class="skill-badge">Cyber Kill Chain</span>
+                        <span class="skill-badge">Log Correlation & Analysis</span>
+                        <span class="skill-badge">Threat Intelligence</span>
                     </div>
                 </div>
                 <!-- Languages -->
@@ -1479,8 +1415,10 @@
                     </div>
                     <div class="skill-badges">
                         <span class="skill-badge">Wazuh</span>
+                        <span class="skill-badge">FortiSIEM</span>
                         <span class="skill-badge">SentinelOne</span>
                         <span class="skill-badge">Palo Alto</span>
+                        <span class="skill-badge">Sophos Firewall</span>
                         <span class="skill-badge">Jupyter Notebook</span>
                         <span class="skill-badge">VS Code</span>
                         <span class="skill-badge">Microsoft Office</span>
@@ -1533,50 +1471,67 @@
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
             <div class="experience-timeline">
-                <!-- Experience 1 -->
+                <!-- Experience 1 - Current -->
                 <div class="exp-item">
                     <div class="exp-content">
-                        <span class="exp-period">2025 - Present</span>
-                        <h3 class="exp-title">SOC Analyst Intern</h3>
-                        <span class="exp-company">Necurity Solutions Network Security Private Ltd</span>
-                        <p>monitoring security events and alerts using Wazuh, Palo Alto, and SentinelOne. Analyzed logs, identified potential threats, and assisted in incident response. Gained hands-on experience in network monitoring, threat detection, and Linux-based environments.</p>
+                        <span class="exp-period">2026 FEB - Present</span>
+                        <h3 class="exp-title">SOC Analyst</h3>
+                        <span class="exp-company">Amvion Labs</span>
+                        <p>Currently monitoring and analyzing security events using Wazuh and FortiSIEM in a professional SOC environment. Analyzing logs, system logs, EDR logs, and firewall logs to detect and correlate security incidents. Performing proactive threat analysis and incident escalation for the organization.</p>
                         <ul class="exp-responsibilities">
-                            <li>monitoring security alerts and performed initial triage of incidents</li>
-                            <li>Utilized SIEM tools (Wazuh) to analyze logs and detect anomalies in network traffic</li>
-                            <li>Monitored and analyzed network traffic logs in (Palo Alto Firewall) to detect suspicious activities, reviewed blocked connections, and assisted in identifying intrusion attempts and policy violations.</li>
-                            <li>Monitored endpoint alerts in (SentinelOne EDR), investigated malicious behavior, analyzed detection reports, and supported incident response by isolating and remediating compromised systems.</li>
-                            <li>Documented security incidents and participated in incident response procedures</li>
-                            <li>Collaborated with security team to implement security improvements</li>
+                            <li>Monitoring and correlating logs from Wazuh and FortiSIEM SIEM platforms</li>
+                            <li>Analyzing system logs, EDR alerts, and firewall logs for suspicious activity and threat patterns</li>
+                            <li>Detecting and investigating potential security incidents with threat correlation</li>
+                            <li>Escalating suspicious activities and coordinating incident response procedures</li>
+                            <li>Documenting security events and maintaining incident response records</li>
+                            <li>Collaborating with security team to enhance detection and response capabilities</li>
                         </ul>
                     </div>
                 </div>
                 <!-- Experience 2 -->
                 <div class="exp-item">
                     <div class="exp-content">
-                        <span class="exp-period">2019 - 2024</span>
-                        <h3 class="exp-title">Hardware Support Technician</h3>
-                        <span class="exp-company">Freelance</span>
-                        <p>As a Freelance Hardware Support Technician, I provided technical assistance to friends and clients by assembling custom PCs and resolving common hardware and software issues. My responsibilities included system assembly, OS and software installations, troubleshooting performance issues, and diagnosing hardware faults. I regularly handled blue screen errors, driver updates, and MS Office installations, ensuring systems were optimized and stable.</p>
+                        <span class="exp-period">2025 OCT - 2026 FEB</span>
+                        <h3 class="exp-title">SOC Analyst Intern</h3>
+                        <span class="exp-company">Necurity Solutions Network Security Private Ltd</span>
+                        <p>Gained hands-on experience in security monitoring and incident response using industry-standard SIEM and security tools. Analyzed logs and identified potential threats while developing foundational SOC skills in a professional environment.</p>
                         <ul class="exp-responsibilities">
-                            <li>Assembled and configured custom desktop PCs based on individual requirements and performance needs.</li>
-                            <li>Installed and updated operating systems, drivers, and Microsoft Office applications for optimal functionality.</li>
-                            <li>Diagnosed and resolved system errors, blue screens, and hardware/software issues efficiently.</li>
-                            <li>Provided technical support and maintenance, ensuring system stability and improved user experience.</li>
+                            <li>Monitoring security alerts and performed initial triage of incidents</li>
+                            <li>Utilized SIEM tools (Wazuh) to analyze logs and detect anomalies in network traffic</li>
+                            <li>Monitored and analyzed network traffic logs in Palo Alto Firewall to detect suspicious activities and policy violations</li>
+                            <li>Monitored endpoint alerts in SentinelOne EDR and investigated malicious behavior</li>
+                            <li>Documented security incidents and participated in incident response procedures</li>
+                            <li>Collaborated with security team to implement security improvements</li>
                         </ul>
                     </div>
                 </div>
                 <!-- Experience 3 -->
                 <div class="exp-item">
                     <div class="exp-content">
-                        <span class="exp-period">2018 - 2025</span>
-                        <h3 class="exp-title">Event Manage</h3>
+                        <span class="exp-period">2019 - 2024</span>
+                        <h3 class="exp-title">Hardware Support Technician</h3>
                         <span class="exp-company">Freelance</span>
-                        <p>As a part-time Event Manager, I worked with my team to plan and manage wedding and corporate events, handling end-to-end coordination from planning to execution. I managed logistics, vendors, catering, and production, ensuring smooth event flow and client satisfaction. This experience strengthened my leadership, teamwork, time management, and problem-solving skills while delivering high-quality events under tight deadlines.</p>
+                        <p>Provided technical assistance by assembling custom PCs and resolving hardware and software issues. Handled system optimization, OS installations, and troubleshooting of performance problems with attention to detail and customer satisfaction.</p>
+                        <ul class="exp-responsibilities">
+                            <li>Assembled and configured custom desktop PCs based on individual requirements and performance needs</li>
+                            <li>Installed and updated operating systems, drivers, and Microsoft Office applications for optimal functionality</li>
+                            <li>Diagnosed and resolved system errors, blue screens, and hardware/software issues efficiently</li>
+                            <li>Provided technical support and maintenance, ensuring system stability and improved user experience</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Experience 4 -->
+                <div class="exp-item">
+                    <div class="exp-content">
+                        <span class="exp-period">2018 - 2025</span>
+                        <h3 class="exp-title">Event Manager</h3>
+                        <span class="exp-company">Freelance</span>
+                        <p>Managed end-to-end coordination of wedding and corporate events with a focus on client satisfaction. Handled logistics, vendor management, and on-site execution while maintaining timelines and budgets under pressure.</p>
                         <ul class="exp-responsibilities">
                             <li>Planned and executed wedding and corporate events from concept to completion, ensuring seamless coordination and client satisfaction</li>
-                            <li>Managed logistics, vendor operations, catering, and production to deliver high-quality event experiences.</li>
-                            <li>Supervised on-site teams and maintained timelines, budgets, and workflow efficiency under pressure.</li>
-                            <li>Collaborated with clients and partners to align event goals, resolve issues quickly, and ensure smooth execution.</li>
+                            <li>Managed logistics, vendor operations, catering, and production to deliver high-quality event experiences</li>
+                            <li>Supervised on-site teams and maintained timelines, budgets, and workflow efficiency under pressure</li>
+                            <li>Collaborated with clients and partners to align event goals, resolve issues quickly, and ensure smooth execution</li>
                         </ul>
                     </div>
                 </div>
@@ -1589,14 +1544,88 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- Project 1 - SOC IP Analyzer (Reordered to first) -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">SOC IP Analyzer</h3>
+                        <span class="project-tag">IP Analyzer Tool</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">A real-time cybersecurity tool that helps SOC analysts investigate IP addresses by providing geolocation, threat reputation, and risk level details. Integrates data from sources like AbuseIPDB and VirusTotal to detect malicious activity and support faster incident response.</p>
+                        <div class="tech-title">Technologies Used</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">HTML/CSS/JS</span>
+                            <span class="tech-badge">APIs (AbuseIPDB, VirusTotal)</span>
+                            <span class="tech-badge">Threat Intelligence</span>
+                            <span class="tech-badge">Flask REST API</span>
+                        </div>
+                        <div class="project-preview">
+                            <i class="fas fa-shield-alt preview-icon"></i>
+                        </div>
+                        <a href="https://ashwanth-saran.github.io/soc-ip-analyzer-portfolio/" class="project-link">
+                            View Project Details
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 2 - Easy Endpoint Auditor (Reordered to second) -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Easy Endpoint Auditor</h3>
+                        <span class="project-tag">Forensic Auditor</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">A lightweight, automated forensic triage tool for Windows systems that monitors critical security indicators. It captures digital snapshots of persistence mechanisms, active network connections, suspicious file locations, and failed authentication attempts to detect malware and unauthorized access.</p>
+                        <div class="tech-title">Technologies Used</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge">PowerShell</span>
+                            <span class="tech-badge">Windows Security Logs</span>
+                            <span class="tech-badge">System Monitoring</span>
+                            <span class="tech-badge">Forensic Analysis</span>
+                        </div>
+                        <div class="project-preview">
+                            <i class="fas fa-search preview-icon"></i>
+                        </div>
+                        <a href="https://github.com/ashwanth-saran/Easy-Endpoint-Auditor" class="project-link">
+                            View Project Details
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 3 - IP Reputation Enrichment Tool -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">IP Reputation Enrichment Tool</h3>
+                        <span class="project-tag">Threat Intelligence</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">A Python-based automation tool that enriches IP addresses using free-tier threat intelligence sources like AbuseIPDB and VirusTotal. Designed for SOC analysts and security professionals to perform bulk IP reputation analysis with severity classification in an Excel-friendly workflow.</p>
+                        <div class="tech-title">Technologies Used</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Excel (openpyxl)</span>
+                            <span class="tech-badge">AbuseIPDB API</span>
+                            <span class="tech-badge">VirusTotal API</span>
+                            <span class="tech-badge">Pandas</span>
+                        </div>
+                        <div class="project-preview">
+                            <i class="fas fa-globe preview-icon"></i>
+                        </div>
+                        <a href="https://github.com/ashwanth-saran/ip-reputation-enrichment-tool" class="project-link">
+                            View Project Details
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 4 - CRESBOT -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">CRESBOT</h3>
                         <span class="project-tag">AI Chatbot</span>
                     </div>
                     <div class="project-body">
-                        <p class="project-description">Real-time chatbot UI for exploring college data like admissions, fees, and placements with interactive interface and animations.</p>
+                        <p class="project-description">Real-time chatbot UI for exploring college data like admissions, fees, and placements with interactive interface and smooth animations. Demonstrates understanding of NLP concepts and user interaction design.</p>
                         <div class="tech-title">Technologies Used</div>
                         <div class="tech-badges">
                             <span class="tech-badge">HTML</span>
@@ -1614,14 +1643,14 @@
                         </a>
                     </div>
                 </div>
-                <!-- Project 2 -->
+                <!-- Project 5 - Gender & Age Prediction -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">Gender & Age Prediction</h3>
                         <span class="project-tag">Machine Learning</span>
                     </div>
                     <div class="project-body">
-                        <p class="project-description">Facial image-based prediction system using computer vision and deep learning, applicable in security and personalization scenarios.</p>
+                        <p class="project-description">Facial image-based prediction system using computer vision and deep learning, applicable in security and personalization scenarios. Demonstrates proficiency in CNN architecture and image processing techniques.</p>
                         <div class="tech-title">Technologies Used</div>
                         <div class="tech-badges">
                             <span class="tech-badge">Python</span>
@@ -1633,31 +1662,6 @@
                             <i class="fas fa-brain preview-icon"></i>
                         </div>
                         <a href="https://ashwanth-saran.github.io/gender-age-prediction-portfolio/" class="project-link">
-                            View Project Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Project 3 - New Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">SOC IP Analyzer</h3>
-                        <span class="project-tag">IP Analyzer Tool</span>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">The SOC IP Analyzer is a real-time cybersecurity tool that helps SOC analysts investigate IP addresses by providing geolocation, threat reputation, and risk level details. It integrates data from sources like AbuseIPDB and VirusTotal to detect malicious activity and support faster incident response and threat analysis.</p>
-                        <div class="tech-title">Technologies Used</div>
-                        <div class="tech-badges">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">HTML, CSS, JavaScript</span>
-                            <span class="tech-badge">APIs (AbuseIPDB, VirusTotal)</span>
-                            <span class="tech-badge">Threat Intelligence & Geolocation APIs</span>
-                            <span class="tech-badge">Flask REST API</span>
-                        </div>
-                        <div class="project-preview">
-                            <i class="fas fa-shield-alt preview-icon"></i>
-                        </div>
-                        <a href="https://ashwanth-saran.github.io/soc-ip-analyzer-portfolio/" class="project-link">
                             View Project Details
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -1676,8 +1680,8 @@
                 <div class="cert-card">
                     <div class="cert-header">
                         <div class="cert-icon">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco Logo" class="cert-logo">
-</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco Logo" class="cert-logo">
+                        </div>
                         <h3 class="cert-title">Cisco Security Operations Center</h3>
                     </div>
                     <div class="cert-body">
@@ -1694,8 +1698,8 @@
                 <div class="cert-card">
                     <div class="cert-header">
                         <div class="cert-icon">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM Logo" class="cert-logo">
-</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM Logo" class="cert-logo">
+                        </div>
                         <h3 class="cert-title">IBM Introduction to Cybersecurity Careers</h3>
                     </div>
                     <div class="cert-body">
@@ -1712,9 +1716,8 @@
                 <div class="cert-card">
                     <div class="cert-header">
                         <div class="cert-icon">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="cert-logo">
-</div>
-
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="cert-logo">
+                        </div>
                         <h3 class="cert-title">Google Introduction to Generative AI Studio</h3>
                     </div>
                     <div class="cert-body">
@@ -1726,6 +1729,42 @@
                         <img src="cert2.jpg" alt="Introduction to Generative AI Studio">
                     </div>
                     <a href="https://simpli-web.app.link/e/fgxI07bqYXb" class="cert-link">Verify Credential</a>
+                </div>
+                <!-- Certification 4 - TryHackMe -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="cert-title">TryHackMe Pre-Security Certificate</h3>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-badge">Pre-Security Fundamentals</span>
+                        <p>Completed hands-on training in cybersecurity fundamentals, including networking, system administration, and foundational security concepts through TryHackMe's comprehensive pre-security course.</p>
+                        <div class="cert-date">Issued: December 10, 2025 | Expires: No Expiry</div>
+                    </div>
+                    <div class="cert-image">
+                        <img src="thm-cert.jpg" alt="TryHackMe Pre-Security">
+                    </div>
+                    <a href="https://tryhackme.com/certificate/THM-LBEBZHJ5FZ" class="cert-link">Verify Credential</a>
+                </div>
+                <!-- Certification 5 - Fortinet -->
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="cert-title">Introduction to the Threat Landscape 3.0 - Fortinet</h3>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-badge">Threat Landscape Fundamentals</span>
+                        <p>Earned recognition for understanding the current threat landscape, including emerging threats, threat actors, and defensive strategies through Fortinet's official threat intelligence training.</p>
+                        <div class="cert-date">Issued: November 08, 2025 | Expires: No Expiry</div>
+                    </div>
+                    <div class="cert-image">
+                        <img src="fortinet-cert.jpg" alt="Fortinet Threat Landscape">
+                    </div>
+                    <a href="https://www.credly.com/earner/earned/badge/568ce3db-1a81-45fd-b4e8-df2f55a53a85" class="cert-link">Verify Credential</a>
                 </div>
             </div>
         </div>
@@ -1812,13 +1851,22 @@
                                 <a href="https://github.com/ashwanth-saran" target="_blank">github.com/ashwanth-saran</a>
                             </div>
                         </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-medium"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Medium</h4>
+                                <a href="https://medium.com/@ashwanthsaranjc" target="_blank">medium.com/@ashwanthsaranjc</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="availability">
                         <h3 class="contact-title">Availability</h3>
-                        <p>I'm currently seeking entry-level positions in SOC Analyst roles and Network Engineering. Feel free to reach out for opportunities or collaborations.</p>
+                        <p>Currently working as a SOC Analyst at Amvion Labs. Open to networking, collaboration opportunities, and roles in advanced SOC operations, threat intelligence, and security engineering. Feel free to reach out!</p>
                         <div class="status">
                             <div class="status-dot"></div>
-                            <span>Available for full-time positions and freelance projects</span>
+                            <span>Available for collaboration and professional growth</span>
                         </div>
                     </div>
                     <div class="qr-container">
@@ -1880,10 +1928,13 @@
                     <a href="https://www.instagram.com/ash.wxnth/" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
+                    <a href="https://medium.com/@ashwanthsaranjc" class="social-link">
+                        <i class="fab fa-medium"></i>
+                    </a>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 Ashwanth Saran JC. All rights reserved.
+                &copy; 2026 Ashwanth Saran JC. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1936,16 +1987,16 @@
         const skillsSection = document.getElementById('skills');
         const skillCounter = document.getElementById('skillCounter');
         const toolCounter = document.getElementById('toolCounter');
-        let hasAnimated = false; // prevents double execution
+        let hasAnimated = false;
 
         // Intersection Observer setup for counters
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasAnimated) {
-                    animateCounter(skillCounter, 24);
-                    animateCounter(toolCounter, 12);
+                    animateCounter(skillCounter, 27);
+                    animateCounter(toolCounter, 14);
                     hasAnimated = true;
-                    observer.disconnect(); // Stop observing after first trigger
+                    observer.disconnect();
                 }
             });
         }, {
@@ -1956,18 +2007,6 @@
         if (skillsSection) {
             observer.observe(skillsSection);
         }
-        
-        // Scroll animations for timeline items in "Day in Life" section
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        timelineItems.forEach(item => timelineObserver.observe(item));
 
         // Scroll animations for project, education, experience, and certification cards
         const animateOnScroll = (elements) => {
@@ -2000,16 +2039,12 @@
 
         // Fixed Resume Download Functionality
         document.querySelector('.download-resume-btn').addEventListener('click', function() {
-            // Create an invisible link to trigger the download
             const downloadLink = document.createElement('a');
             downloadLink.href = 'https://github.com/ashwanth-saran/ashufoilo/raw/main/resume.pdf';
             downloadLink.download = 'Ashwanth_Saran_Resume.pdf';
             downloadLink.style.display = 'none';
-            // Add to the document
             document.body.appendChild(downloadLink);
-            // Trigger the download
             downloadLink.click();
-            // Clean up
             setTimeout(() => {
                 document.body.removeChild(downloadLink);
             }, 100);
@@ -2024,25 +2059,21 @@
                 const email = document.getElementById('email');
                 const message = document.getElementById('message');
                 
-                // Reset error messages
                 document.getElementById('name-error').textContent = '';
                 document.getElementById('email-error').textContent = '';
                 document.getElementById('message-error').textContent = '';
                 
-                // Validate name
                 if (name.value.trim() === '') {
                     document.getElementById('name-error').textContent = 'Please enter your name';
                     isValid = false;
                 }
                 
-                // Validate email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email.value)) {
                     document.getElementById('email-error').textContent = 'Please enter a valid email address';
                     isValid = false;
                 }
                 
-                // Validate message
                 if (message.value.trim() === '') {
                     document.getElementById('message-error').textContent = 'Please enter your message';
                     isValid = false;
